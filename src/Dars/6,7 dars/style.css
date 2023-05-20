@@ -1,0 +1,13 @@
+.modal{
+    width: 200px;
+    height: 200px;
+    background: green;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(50%, 50%) scale(0);
+    transition: 0.7s linear;
+}
+.modal_open{
+    transform: translate(50%, 50%) scale(1);
+}
