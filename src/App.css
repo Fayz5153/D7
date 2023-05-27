@@ -95,3 +95,12 @@ a {
   justify-content: center;
   top: 0;
 }
+.btn img{
+  transition: 0.3s linear;
+}
+.moon img{
+  transform: rotate(0);
+}
+.sun img{
+  transform: rotate(180deg);
+}
