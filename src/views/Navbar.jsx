@@ -1,24 +1,24 @@
-import React from 'react'
-import { MyContext } from '../context/context';
-import { Button } from '@mui/material';
-import MyButton from '../components/btn';
+import React, {useState, useEffect} from 'react'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-    const handleClick = () =>{ console.log("click") }
+    const [scroll, setScroll] = useState(0);
+
+    useEffect(()=>{
+        const onScroll = () => {
+            setScroll(window.pageYOffset)
+        }
+        window.addEventListener("scroll", onScroll)
+        return () => window.removeEventListener("scroll", onScroll)
+    },[])
+
+    // console.log(scroll)
     return ( 
-        <MyContext.Consumer>
-            {(x)=>{
-                return(
-                    <div>
-                        <Button onClick={x.handleTheme} variant='contained'>
-                            {x.theme ? "dark" : "light"}
-                        </Button>
-                        <MyButton onClick={handleClick} aaa={"s100"}>salom</MyButton>
-                        <MyButton onClick={()=>console.log("hello")}>hello</MyButton>
-                    </div>
-                )
-            }}
-        </MyContext.Consumer>
+        <div className={scroll > 100 ? 'navbar scrolled' : 'navbar'}>
+            <Link to={"/"}>Home</Link>
+            <Link to={"/about"}>About</Link>
+            <Link to={"/category"}>Category</Link>
+        </div>
      );
 }
  
